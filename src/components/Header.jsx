@@ -1,6 +1,10 @@
-import React from "react";
+import { useContext } from "react";
+
+import { UserContext } from "../context/user/userContext";
 
 import { motion } from "framer-motion";
+
+import { saveState } from "../localStorage";
 
 import Logo from "../img/logo.png";
 import Avatar from "../img/avatar.png";
@@ -11,15 +15,21 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const { currentUser } = useContext(UserContext);
+
+  const photoURL = currentUser ? currentUser.photoURL : null;
+
   const signIn = async (event) => {
     event.preventDefault();
     try {
       const res = await signInWithGooglePopup();
-      console.log(res);
+      const userData = res.user.providerData[0];
+      saveState({ currentUser: userData });
     } catch (error) {
       console.log("something went wrong", error);
     }
   };
+
   return (
     <div className="fixed z-50 w-screen p-6 px-16">
       {/* For laptops and tablets */}
@@ -52,9 +62,9 @@ const Header = () => {
           <div className="relative">
             <motion.img
               whileTap={{ scale: 0.7 }}
-              src={Avatar}
+              src={photoURL ? photoURL : Avatar}
               alt="user profile"
-              className="w-10 min-w-[40px] h-10 min-h-[40px] cursor-pointer drop-shadow-sm"
+              className="w-10 min-w-[40px] h-10 min-h-[40px] cursor-pointer drop-shadow-sm rounded-full"
               onClick={signIn}
             />
           </div>
