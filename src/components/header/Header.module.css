@@ -1,0 +1,117 @@
+.header {
+  position: fixed;
+  width: 100vw;
+  padding: 1.5rem 4rem;
+  background: var(--bg-primary);
+}
+
+/* Desktop and Large Screen */
+
+.headerDesktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoImg {
+  width: 2rem;
+  object-fit: cover;
+}
+
+.logoTxt {
+  color: var(--heading-color);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+.menuContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menuList {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+
+.menuItem {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: var(--text-color);
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  color: var(--heading-color);
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cartIcon {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  cursor: pointer;
+}
+
+.user {
+  position: relative;
+}
+
+.avatar {
+  width: 2.5rem;
+  min-width: 40px;
+  height: 2.5rem;
+  min-height: 40px;
+  border-radius: 50%;
+}
+
+/* Mobile Devices */
+
+.headerMobile {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    padding: 1.5rem 2rem;
+  }
+
+  .menuList {
+    gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 785px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .headerDesktop {
+    display: none;
+  }
+  .headerMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+}

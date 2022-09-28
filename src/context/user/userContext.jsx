@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react";
 
 import * as actionTypes from "./userActionsType";
 
-import { loadState } from "../../localStorage";
+import { loadState } from "../../utils/localStorage/localStorage";
 
 import {
   authStateChangeListner,
@@ -46,12 +46,12 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = authStateChangeListner((user) => {
-      console.log("auth listner callback firing");
       if (user) {
         createUserDocFromAuth(user);
+        const data = user.providerData[0];
+        setCurrentUser(data);
       }
-      const data = user.providerData[0];
-      setCurrentUser(data);
+      setCurrentUser(user);
     });
     return unsubscribe;
   }, []);

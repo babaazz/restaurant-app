@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
+:root {
+  --bg-primary: #f5f3f3;
+  --text-color: #515151;
+  --heading-color: #2e2e2e;
+}
+
 * {
   margin: 0;
   padding: 0;
